@@ -46,34 +46,44 @@ function section1() {
 export default section1;
 
 function Slide({ data }) {
-  const { id, title, category, img, published, author, description } = data;
+  const { id, title, category, img, published, author } = data;
 
   return (
     <div className="grid md:grid-cols-2">
       <div className="image">
-        <Link href={"/"}>
+        <Link href={`/posts/${id}`}>
           <Image src={img || "/"} width={600} height={600} alt="" />
         </Link>
       </div>
       <div className="info flex justify-center flex-col">
         <div className="cat">
-          <Link className="text-orange-600 hover:text-orange-800" href={"/"}>
+          <Link
+            className="text-orange-600 hover:text-orange-800"
+            href={`/posts/${id}`}
+          >
             {category || "Unknown"}
           </Link>
-          <Link className="text-gray-800 hover:text-gray-600" href={"/"}>
+          <Link
+            className="text-gray-800 hover:text-gray-600"
+            href={`/posts/${id}`}
+          >
             - {published || "Unknown"}
           </Link>
         </div>
         <div className="title">
           <Link
-            href={"/"}
+            href={`/posts/${id}`}
             className="text-3xl md:text-6xl font-bold text-gray-800 hover:text-gray-600"
           >
             {title || "Unknown"}
           </Link>
         </div>
-        <p className="text-gray-500 py-3">{description || "No description"}</p>
-        {author ? <Author></Author> : <></>}
+        <p className="text-gray-500 py-3">
+          {" "}
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
+          provident voluptatum laborum!{" "}
+        </p>
+        {author ? <Author {...author}></Author> : <></>}
       </div>
     </div>
   );

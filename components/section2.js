@@ -30,7 +30,7 @@ function Post({ data }) {
   return (
     <div className="item">
       <div className="images">
-        <Link href={"/"}>
+        <Link href={`/posts/${id}`}>
           <Image
             src={img || "/"}
             className="rounded"
@@ -42,16 +42,22 @@ function Post({ data }) {
       </div>
       <div className="info flex justify-center flex-col py-4">
         <div className="cat">
-          <Link className="text-orange-600 hover:text-orange-800" href={"/"}>
+          <Link
+            className="text-orange-600 hover:text-orange-800"
+            href={`/posts/${id}`}
+          >
             {category || "Unknown"}
           </Link>
-          <Link href={"/"} className="text-gray-800 hover:text-gray-600">
+          <Link
+            href={`/posts/${id}`}
+            className="text-gray-800 hover:text-gray-600"
+          >
             - {published || "Unknown"}
           </Link>
         </div>
         <div className="title">
           <Link
-            href={"/"}
+            href={`/posts/${id}`}
             className="text-xl font-bold text-gray-800 hover:text-gray-600"
           >
             {title || "Title"}
@@ -63,7 +69,7 @@ function Post({ data }) {
           text by the name of Lorem Ipsum decided to leave for the far World of
           Grammar.
         </p>
-        {author ? <Author></Author> : <></>}
+        {author ? <Author {...author}></Author> : <></>}
       </div>
     </div>
   );
